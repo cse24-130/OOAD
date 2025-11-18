@@ -26,7 +26,7 @@ public abstract class Account {
         return "Account Details:\n" +
                "Holder: " + holderName + "\n" +
                "Account No: " + accNo + "\n" +
-               "Balance: $" + balance + "\n" +
+               "Balance: BWP " + String.format("%.2f", balance) + "\n" +
                "Branch: " + branch + "\n" +
                "Type: " + accType + "\n" +
                "Created: " + creationDate;

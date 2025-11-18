@@ -1,24 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.FontWeight?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="loginPane" stylesheets="@styles.css" prefHeight="735.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
-      <Label layoutX="228.0" layoutY="14.0" text="Banking app">
-         <font>
-            <Font name="System Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="169.0" layoutY="94.0" text="Username" />
-      <TextField fx:id="usernameField" layoutX="226.0" layoutY="90.0" />
-      <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="140.0" />
-      <Label layoutX="169.0" layoutY="144.0" text="Password" />
-      <Button fx:id="loginButton" layoutX="226.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
+      <VBox alignment="CENTER" spacing="30.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <!-- App Header -->
+            <Label styleClass="label-header" text="Milli Banking" textFill="#2c3e50">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            
+            <HBox alignment="CENTER" spacing="40.0" VBox.vgrow="ALWAYS">
+               <!-- Login Section -->
+               <VBox styleClass="card" alignment="TOP_CENTER" spacing="20.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+                  <padding>
+                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  </padding>
+                  <children>
+                     <Label styleClass="label-header" text="Login" textFill="#2c3e50">
+                        <font>
+                           <Font name="Segoe UI Bold" size="24.0" />
+                        </font>
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     
+                     <VBox spacing="8.0">
+                        <Label text="Username" style="-fx-font-weight: 600;" />
+                        <TextField fx:id="loginUsernameField" promptText="Enter your username" style="-fx-pref-width: 300;" />
+                     </VBox>
+                     
+                     <VBox spacing="8.0">
+                        <Label text="Password" style="-fx-font-weight: 600;" />
+                        <PasswordField fx:id="loginPasswordField" promptText="Enter your password" style="-fx-pref-width: 300;" />
+                     </VBox>
+                     
+                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" text="Sign In" styleClass="primary" style="-fx-pref-width: 300; -fx-pref-height: 40; -fx-font-size: 14; -fx-font-weight: bold;" />
+                     
+                     <Label style="-fx-text-fill: #6c757d; -fx-font-size: 12;" text="Forgot password?">
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                     </Label>
+                  </children>
+               </VBox>
+               
+               <!-- Vertical Divider -->
+               <Separator orientation="VERTICAL" styleClass="separator" />
+               
+               <!-- Registration Section -->
+               <VBox styleClass="card" alignment="TOP_CENTER" spacing="15.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+                  <padding>
+                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  </padding>
+                  <children>
+                     <Label styleClass="label-header" text="Create Account" textFill="#2c3e50">
+                        <font>
+                           <Font name="Segoe UI Bold" size="24.0" />
+                        </font>
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     
+                     <HBox spacing="10.0">
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                           <Label text="Full Name" style="-fx-font-weight: 600;" />
+                           <TextField fx:id="regFullNameField" promptText="John Doe" />
+                        </VBox>
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                           <Label text="ID Number" style="-fx-font-weight: 600;" />
+                           <TextField fx:id="regIdNumberField" promptText="ID Number" />
+                        </VBox>
+                     </HBox>
+                     
+                     <VBox spacing="8.0">
+                        <Label text="Email" style="-fx-font-weight: 600;" />
+                        <TextField fx:id="regEmailField" promptText="email@example.com" />
+                     </VBox>
+                     
+                     <VBox spacing="8.0">
+                        <Label text="Address" style="-fx-font-weight: 600;" />
+                        <TextField fx:id="regAddressField" promptText="Your address" />
+                     </VBox>
+                     
+                     <HBox spacing="10.0">
+                        <VBox spacing="8.0">
+                           <Label text="Phone" style="-fx-font-weight: 600;" />
+                           <TextField fx:id="regPhoneField" promptText="+1234567890" />
+                        </VBox>
+                        <VBox spacing="8.0">
+                           <Label text="Gender" style="-fx-font-weight: 600;" />
+                           <TextField fx:id="regGenderField" promptText="Gender" />
+                        </VBox>
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                           <Label text="Username" style="-fx-font-weight: 600;" />
+                           <TextField fx:id="regUsernameField" promptText="Choose username" />
+                        </VBox>
+                     </HBox>
+                     
+                     <VBox spacing="8.0">
+                        <Label text="Password" style="-fx-font-weight: 600;" />
+                        <PasswordField fx:id="regPasswordField" promptText="Create a strong password" />
+                     </VBox>
+                     
+                     <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" text="Create Account" styleClass="success" style="-fx-pref-width: 300; -fx-pref-height: 40; -fx-font-size: 14; -fx-font-weight: bold;" />
+                     
+                     <Label style="-fx-text-fill: #6c757d; -fx-font-size: 12; -fx-alignment: center;" text="By creating an account, you agree to our Terms &amp; Conditions">
+                        <padding>
+                           <Insets top="10.0" />
+                        </padding>
+                     </Label>
+                  </children>
+               </VBox>
+            </HBox>
+            
+            <!-- Footer -->
+            <Label style="-fx-text-fill: #95a5a6; -fx-font-size: 12;" text="© 2025 Milli Banking. All rights reserved.">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
    </children>
-</Pane>
+</AnchorPane>

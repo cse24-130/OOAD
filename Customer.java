@@ -41,6 +41,10 @@ public class Customer {
         accounts.add(account);
         System.out.println("Account " + account.getAccNo() + " added for customer " + fullname);
     }
+    
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = new ArrayList<>(accounts);
+    }
 
     // Additional useful methods
     public List<Account> getAccounts() {

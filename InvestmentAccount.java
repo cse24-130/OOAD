@@ -1,6 +1,6 @@
 public class InvestmentAccount extends Account implements InterestBearing {
     private double minimumBalance;
-    private static final double INTEREST_RATE = 0.25;
+    private static final double INTEREST_RATE = 0.05; // 5% monthly
 
     public InvestmentAccount(String holderName, long accNo, double balance, String branch, double minimumBalance) {
         super(holderName, accNo, balance, branch, "Investment");
@@ -11,7 +11,7 @@ public class InvestmentAccount extends Account implements InterestBearing {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            System.out.println("Deposited: $" + amount + " to Investment Account " + accNo);
+            System.out.println("Deposited: BWP " + String.format("%.2f", amount) + " to Investment Account " + accNo);
         } else {
             System.out.println("Invalid deposit amount");
         }
@@ -21,7 +21,7 @@ public class InvestmentAccount extends Account implements InterestBearing {
     public void withdraw(double amount) {
         if (amount > 0 && (balance - amount) >= minimumBalance) {
             balance -= amount;
-            System.out.println("Withdrawn: $" + amount + " from Investment Account " + accNo);
+            System.out.println("Withdrawn: BWP " + String.format("%.2f", amount) + " from Investment Account " + accNo);
         } else {
             System.out.println("Withdrawal would violate minimum balance requirement");
         }
@@ -29,7 +29,7 @@ public class InvestmentAccount extends Account implements InterestBearing {
 
     @Override
     public double CalculateMonthlyInterest() {
-        double monthlyInterest = balance * (INTEREST_RATE / 12);
+        double monthlyInterest = balance * INTEREST_RATE; // 5% monthly
         balance += monthlyInterest;
         return monthlyInterest;
     }
@@ -40,7 +40,7 @@ public class InvestmentAccount extends Account implements InterestBearing {
 
     public void interest() {
         double interest = CalculateMonthlyInterest();
-        System.out.println("Interest applied: $" + interest);
+        System.out.println("Interest applied: BWP " + String.format("%.2f", interest));
     }
 
     // Getters and Setters

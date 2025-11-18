@@ -1,6 +1,6 @@
 public class SavingsAccount extends Account implements InterestBearing {
     private int PIN;
-    private static final double INTEREST_RATE = 0.05;
+    private static final double INTEREST_RATE = 0.0005; // 0.05% monthly
 
     public SavingsAccount(String holderName, long accNo, double balance, String branch, int PIN) {
         super(holderName, accNo, balance, branch, "Savings");
@@ -11,7 +11,7 @@ public class SavingsAccount extends Account implements InterestBearing {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            System.out.println("Deposited: $" + amount + " to Savings Account " + accNo);
+            System.out.println("Deposited: BWP " + String.format("%.2f", amount) + " to Savings Account " + accNo);
         } else {
             System.out.println("Invalid deposit amount");
         }
@@ -19,17 +19,13 @@ public class SavingsAccount extends Account implements InterestBearing {
 
     @Override
     public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            System.out.println("Withdrawn: $" + amount + " from Savings Account " + accNo);
-        } else {
-            System.out.println("Insufficient funds or invalid amount");
-        }
+        // Savings account does not allow withdrawals according to requirements
+        System.out.println("Withdrawals are not allowed from Savings Account");
     }
 
     @Override
     public double CalculateMonthlyInterest() {
-        double monthlyInterest = balance * (INTEREST_RATE / 12);
+        double monthlyInterest = balance * INTEREST_RATE; // 0.05% monthly
         balance += monthlyInterest;
         return monthlyInterest;
     }
